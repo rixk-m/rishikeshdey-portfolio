@@ -20,3 +20,7 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# Local camera masters (preserved locally, never deployed)
+masters/
+*.mp4.MP4

@@ -83,5 +83,5 @@ export const generatedPhotos: GeneratedPhoto[] = [
 ];
 
 export const generatedVideos: string[] = [
-  "/assets/cinematography/showreel.mp4.MP4"
+  "/assets/cinematography/showreel-web.mp4"
 ];

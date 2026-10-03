@@ -49,9 +49,11 @@ export const cineOpening: CinePhoto | undefined = cinePhotos.find((p) => !p.port
 /** Every other photo becomes a plate in the scroll sequence. */
 export const cinePlates: CinePhoto[] = cinePhotos.filter((p) => p !== cineOpening);
 
-/** The final, manually trimmed reel. Played exactly as delivered. */
+/** The final, manually trimmed reel. Web-optimized copy. */
 export const cineReelSrc: string | null =
-  generatedVideos.find((v) => /showreel/i.test(v)) ?? generatedVideos[0] ?? null;
+  generatedVideos.find((v) => /showreel-web/i.test(v)) ??
+  generatedVideos.find((v) => /showreel/i.test(v)) ??
+  '/assets/cinematography/showreel-web.mp4';
 
 /** Editorial copy (no invented facts). */
 export const cineCopy = {
