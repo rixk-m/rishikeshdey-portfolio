@@ -1,0 +1,47 @@
+/* ============================================================
+   MAGNETIC BUTTON
+   
+   Wrapper that provides a magnetic cursor-pull effect.
+   The inner element receives subtle hover feedback.
+   ============================================================ */
+
+.magnetic-btn {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.magnetic-btn__inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  transition:
+    transform var(--duration-normal) var(--ease-out),
+    opacity var(--duration-normal) var(--ease-out);
+}
+
+/* Subtle inner squeeze on hover for tactile feedback */
+.magnetic-btn:hover .magnetic-btn__inner {
+  transform: scale(1.02);
+}
+
+.magnetic-btn:active .magnetic-btn__inner {
+  transform: scale(0.96);
+  transition-duration: var(--duration-fast);
+}
+
+
+/* ----------------------------------------------------------
+   REDUCED MOTION
+   ---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .magnetic-btn__inner {
+    transition: none;
+  }
+
+  .magnetic-btn:hover .magnetic-btn__inner,
+  .magnetic-btn:active .magnetic-btn__inner {
+    transform: none;
+  }
+}

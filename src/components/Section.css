@@ -1,0 +1,48 @@
+/* ============================================================
+   SECTION WRAPPER
+   
+   Consistent layout container for all portfolio sections.
+   ============================================================ */
+
+.section {
+  position: relative;
+  width: 100%;
+  padding-block: var(--section-gap-sm);
+}
+
+.section__inner {
+  width: 100%;
+  max-width: var(--width-content);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Size variants */
+.section--narrow .section__inner {
+  max-width: var(--width-narrow);
+}
+
+.section--wide .section__inner {
+  max-width: var(--width-wide);
+}
+
+.section--full .section__inner {
+  max-width: none;
+  padding-inline: 0;
+}
+
+/* Spacing variants */
+.section--flush {
+  padding-block: 0;
+}
+
+.section--lg {
+  padding-block: var(--section-gap);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--section-gap);
+  }
+}

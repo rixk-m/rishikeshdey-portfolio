@@ -1,0 +1,202 @@
+/* ============================================================
+   INTERACTION UTILITIES
+   
+   Shared CSS utilities for the creative interaction layer.
+   Provides consistent motion language across all sections.
+   
+   These are additive — they enhance existing component styles
+   without replacing them.
+   ============================================================ */
+
+
+/* ----------------------------------------------------------
+   PAGE ENTRANCE
+   
+   Smooth opacity fade on initial page load.
+   Applied to the root .app wrapper.
+   ---------------------------------------------------------- */
+
+.app {
+  animation: pageEntrance 1s var(--ease-out) both;
+}
+
+@keyframes pageEntrance {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* ----------------------------------------------------------
+   REVEAL ON SCROLL
+   
+   Generic reveal class. Add `reveal` to any element and
+   toggle `reveal--visible` via IntersectionObserver or
+   the useInView hook.
+   ---------------------------------------------------------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity var(--duration-slower) var(--ease-out),
+    transform var(--duration-slower) var(--ease-out);
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger variants — applied to children */
+.reveal--stagger > *:nth-child(1) { transition-delay: 0s; }
+.reveal--stagger > *:nth-child(2) { transition-delay: 0.06s; }
+.reveal--stagger > *:nth-child(3) { transition-delay: 0.12s; }
+.reveal--stagger > *:nth-child(4) { transition-delay: 0.18s; }
+.reveal--stagger > *:nth-child(5) { transition-delay: 0.24s; }
+.reveal--stagger > *:nth-child(6) { transition-delay: 0.30s; }
+.reveal--stagger > *:nth-child(7) { transition-delay: 0.36s; }
+.reveal--stagger > *:nth-child(8) { transition-delay: 0.42s; }
+
+
+/* ----------------------------------------------------------
+   LINK HOVER — Underline sweep
+   
+   A minimal underline that sweeps in from the left on hover.
+   Use on inline text links.
+   ---------------------------------------------------------- */
+
+.link-hover {
+  position: relative;
+  display: inline-block;
+}
+
+.link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.link-hover:hover::after,
+.link-hover:focus-visible::after {
+  transform: scaleX(1);
+}
+
+
+/* ----------------------------------------------------------
+   INTERACTIVE TAGS
+   
+   Enhanced hover states for pill/tag elements like the
+   discipline tags in About.
+   ---------------------------------------------------------- */
+
+.tag-interactive {
+  transition:
+    border-color var(--duration-normal) var(--ease-out),
+    background-color var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out),
+    transform var(--duration-fast) var(--ease-spring);
+}
+
+.tag-interactive:hover {
+  border-color: var(--color-fg-muted);
+  background-color: rgba(255, 255, 255, 0.04);
+  transform: translateY(-1px);
+}
+
+.tag-interactive:active {
+  transform: translateY(0) scale(0.97);
+}
+
+
+/* ----------------------------------------------------------
+   IMAGE HOVER LIFT
+   
+   Subtle lift + scale on image containers for premium feel.
+   Applied to image wrappers.
+   ---------------------------------------------------------- */
+
+.image-lift {
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    box-shadow var(--duration-slow) var(--ease-out);
+}
+
+.image-lift:hover {
+  transform: translateY(-4px) scale(1.005);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transition-delay: 0s;
+}
+
+
+/* ----------------------------------------------------------
+   SMOOTH SCALE — General purpose scale feedback
+   ---------------------------------------------------------- */
+
+.press-scale {
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.press-scale:active {
+  transform: scale(0.96);
+}
+
+
+/* ----------------------------------------------------------
+   REDUCED MOTION — Disable all interaction utilities
+   ---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .app {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .link-hover::after {
+    transition: none;
+  }
+
+  .tag-interactive {
+    transition: none;
+  }
+
+  .tag-interactive:hover {
+    transform: none;
+  }
+
+  .tag-interactive:active {
+    transform: none;
+  }
+
+  .image-lift {
+    transition: none;
+  }
+
+  .image-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .press-scale {
+    transition: none;
+  }
+
+  .press-scale:active {
+    transform: none;
+  }
+}

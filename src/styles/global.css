@@ -1,0 +1,100 @@
+/* ============================================================
+   GLOBAL STYLES
+   
+   Master stylesheet — imports all foundation layers
+   and applies global defaults.
+   
+   Import order:
+   1. Design tokens (variables)
+   2. CSS reset
+   3. Typography utilities
+   4. Global element styles (this file)
+   ============================================================ */
+
+@import './variables.css';
+@import './reset.css';
+@import './typography.css';
+@import './interactions.css';
+
+
+/* ----------------------------------------------------------
+   HTML & BODY DEFAULTS
+   ---------------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  color: var(--color-fg);
+  background-color: var(--color-bg);
+  overflow-x: hidden;
+}
+
+
+/* ----------------------------------------------------------
+   TEXT SELECTION
+   ---------------------------------------------------------- */
+
+::selection {
+  background-color: var(--color-selection-bg);
+  color: var(--color-selection-fg);
+}
+
+
+/* ----------------------------------------------------------
+   FOCUS STYLES — Accessible, premium
+   ---------------------------------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+
+/* ----------------------------------------------------------
+   SCROLL BAR — Subtle, minimal
+   ---------------------------------------------------------- */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-fg-muted);
+}
+
+/* Firefox */
+@supports (scrollbar-width: thin) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+}
+
+
+/* ----------------------------------------------------------
+   REDUCED MOTION
+   
+   The reset.css handles blanket animation removal.
+   This layer handles scroll-behavior specifically.
+   ---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

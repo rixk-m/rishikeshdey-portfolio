@@ -1,0 +1,44 @@
+{
+  "thumbnail1": {
+    "mtime": 1790930849475.8228,
+    "width": 1600,
+    "height": 1280,
+    "color": "#b48d4b"
+  },
+  "thumbnail2": {
+    "mtime": 1790932003402.6982,
+    "width": 1600,
+    "height": 1200,
+    "color": "#5f3139"
+  },
+  "thumbnail3": {
+    "mtime": 1790949325060.0288,
+    "width": 1069,
+    "height": 1600,
+    "color": "#1a1116"
+  },
+  "thumbnail4": {
+    "mtime": 1790949391420.3933,
+    "width": 1600,
+    "height": 1067,
+    "color": "#816a62"
+  },
+  "thumbnail5": {
+    "mtime": 1790949487282.874,
+    "width": 1600,
+    "height": 1200,
+    "color": "#334056"
+  },
+  "thumbnail6": {
+    "mtime": 1790949206633.1235,
+    "width": 1600,
+    "height": 1067,
+    "color": "#2b201e"
+  },
+  "thumbnail7": {
+    "mtime": 1790949232313.6672,
+    "width": 1600,
+    "height": 1067,
+    "color": "#332734"
+  }
+}

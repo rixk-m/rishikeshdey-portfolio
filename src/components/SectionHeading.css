@@ -1,0 +1,126 @@
+/* ============================================================
+   SECTION HEADING
+   
+   Eyebrow + title + optional description pattern.
+   Includes scroll-triggered entrance animation.
+   ============================================================ */
+
+.section-heading {
+  margin-bottom: var(--space-12);
+}
+
+.section-heading--center {
+  text-align: center;
+}
+
+/* Eyebrow / label */
+.section-heading__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-fg-muted);
+  margin-bottom: var(--space-4);
+
+  /* Reveal */
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition:
+    opacity var(--duration-slower) var(--ease-out),
+    transform var(--duration-slower) var(--ease-out);
+}
+
+.section-heading--visible .section-heading__eyebrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-heading__eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background-color: var(--color-accent);
+  flex-shrink: 0;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--duration-slow) var(--ease-out);
+  transition-delay: 0.2s;
+}
+
+.section-heading--visible .section-heading__eyebrow::before {
+  transform: scaleX(1);
+}
+
+/* Title */
+.section-heading__title {
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-fg);
+
+  /* Reveal */
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity var(--duration-slower) var(--ease-out),
+    transform var(--duration-slower) var(--ease-out);
+  transition-delay: 0.1s;
+}
+
+.section-heading--visible .section-heading__title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Description */
+.section-heading__description {
+  margin-top: var(--space-4);
+  font-size: clamp(var(--text-base), 1.2vw, var(--text-lg));
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--color-fg-secondary);
+  max-width: 48ch;
+
+  /* Reveal */
+  opacity: 0;
+  transform: translateY(1rem);
+  transition:
+    opacity var(--duration-slower) var(--ease-out),
+    transform var(--duration-slower) var(--ease-out);
+  transition-delay: 0.2s;
+}
+
+.section-heading--visible .section-heading__description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-heading--center .section-heading__description {
+  margin-inline: auto;
+}
+
+
+/* ----------------------------------------------------------
+   REDUCED MOTION
+   ---------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .section-heading__eyebrow,
+  .section-heading__title,
+  .section-heading__description {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .section-heading__eyebrow::before {
+    transform: scaleX(1);
+    transition: none;
+  }
+}
+
